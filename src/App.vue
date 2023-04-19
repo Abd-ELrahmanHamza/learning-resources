@@ -1,7 +1,7 @@
 <template>
   <div>
     <the-header title="RememberMe"></the-header>
-    <the-resources :resources="storedResources"></the-resources>
+    <the-resources></the-resources>
   </div>
 </template>
 
