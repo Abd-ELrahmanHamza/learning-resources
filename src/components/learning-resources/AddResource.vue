@@ -21,22 +21,50 @@
       <div>
         <base-button type="submit">Add Resource</base-button>
       </div>
+      <portal v-if="inputIsInvalid" to="body">
+        <base-dialog @close="confirmError" title="Invalid input">
+          <template #default>
+            <p>Unfortunately, at least one input value is invalid</p>
+            <p>
+              Please check all inputs and make sure you entered at least a few
+              characters in each field
+            </p>
+          </template>
+          <template #actions>
+            <base-button @click="confirmError"> okay </base-button>
+          </template>
+        </base-dialog>
+      </portal>
     </form>
   </base-card>
 </template>
 
 <script>
+import BaseDialog from '../UI/BaseDialog.vue';
 export default {
+  components: { BaseDialog },
   data() {
     return {
       title: '',
       link: '',
       description: '',
+      inputIsInvalid: '',
     };
   },
   methods: {
     submitForm() {
+      if (
+        this.title.trim() === '' ||
+        this.description.trim() === '' ||
+        this.link.trim() === ''
+      ) {
+        this.inputIsInvalid = true;
+        return;
+      }
       this.addResource(this.title, this.description, this.link);
+    },
+    confirmError() {
+      this.inputIsInvalid = false;
     },
   },
   inject: ['addResource'],
