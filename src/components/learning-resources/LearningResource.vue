@@ -3,7 +3,7 @@
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <base-button mode="flat">Delete</base-button>
+        <base-button @click="handleDelete" mode="flat">Delete</base-button>
       </header>
       <p>{{ description }}</p>
       <nav>
@@ -17,7 +17,13 @@
 import BaseCard from '../UI/BaseCard.vue';
 export default {
   components: { BaseCard },
-  props: ['title', 'description', 'link'],
+  props: ['title', 'description', 'link', 'id'],
+  inject: ['deleteResource'],
+  methods: {
+    handleDelete() {
+      this.deleteResource(this.id);
+    },
+  },
 };
 </script>
 
