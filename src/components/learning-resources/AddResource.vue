@@ -21,7 +21,7 @@
       <div>
         <base-button type="submit">Add Resource</base-button>
       </div>
-      <portal v-if="inputIsInvalid" to="body">
+      <teleport v-if="inputIsInvalid" to="body">
         <base-dialog @close="confirmError" title="Invalid input">
           <template #default>
             <p>Unfortunately, at least one input value is invalid</p>
@@ -34,7 +34,7 @@
             <base-button @click="confirmError"> okay </base-button>
           </template>
         </base-dialog>
-      </portal>
+      </teleport>
     </form>
   </base-card>
 </template>
