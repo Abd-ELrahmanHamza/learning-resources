@@ -51,4 +51,4 @@
 
 ## 🔒 License <a name = "license"></a>
 
-> This software is licensed under MIT License, See [License](https://github.com/CMP24-SWE-TEAM3/Front-End/blob/main/LICENSE) .
+> This software is licensed under MIT License, See [License](./LICENSE) .
